@@ -14,12 +14,15 @@ public class Enemy : MonoBehaviour
     // BULLET STUFF
     public GameObject EnemyBullet;
     public Transform EnemyshottingOffset;
+    // Shoot thing
+    private Animator enemyAnimator;
 
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        enemyAnimator = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision)
@@ -59,7 +62,9 @@ public class Enemy : MonoBehaviour
         int num = Random.Range(1, 1500);
         if (num == 1)
         {
+
             enemyShoot();
+            enemyAnimator.SetTrigger("Shoot");
             GameObject shot = Instantiate(EnemyBullet, EnemyshottingOffset.position, Quaternion.identity);
 
             Destroy(shot, 3f);
