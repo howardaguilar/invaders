@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MothershipManager : MonoBehaviour
 {
@@ -97,6 +98,11 @@ public class MothershipManager : MonoBehaviour
                 element.GetComponent<Enemy>().speedIncrease();
 
             }
+        }
+        // If no enemies remain
+        if ((reds.Length == 0) && (greens.Length == 0) && (blues.Length == 0) && (purples.Length == 0))
+        {
+            SceneManager.LoadScene("Credits");
         }
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    // Enemy sounds
+    private AudioSource audioSource;
+    public AudioClip enemyPow;
+
     public GameObject particle;
     bool bounceRight = true;
     private int amp = 1;
@@ -11,6 +15,12 @@ public class Enemy : MonoBehaviour
     public GameObject EnemyBullet;
     public Transform EnemyshottingOffset;
 
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,11 +33,6 @@ public class Enemy : MonoBehaviour
         GameObject particles = Instantiate(particle, transform.position, Quaternion.identity);
         Destroy(particles, 2f);
         //amp++;
-    }
-
-    private void Start()
-    {
-        
     }
 
     void Update()
@@ -54,6 +59,7 @@ public class Enemy : MonoBehaviour
         int num = Random.Range(1, 1500);
         if (num == 1)
         {
+            //enemyShoot();
             GameObject shot = Instantiate(EnemyBullet, EnemyshottingOffset.position, Quaternion.identity);
 
             Destroy(shot, 3f);
@@ -66,4 +72,9 @@ public class Enemy : MonoBehaviour
         amp++;
     }
 
+    // Sound effects
+    public void enemyShoot()
+    {
+        audioSource.PlayOneShot(enemyPow);
+    }
 }
