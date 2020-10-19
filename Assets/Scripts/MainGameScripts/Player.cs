@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        playerAnimator = GetComponent<Animator>();
+        playerAnimator = this.GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -34,7 +34,6 @@ public class Player : MonoBehaviour
         GameObject shot = Instantiate(bullet, shottingOffset.position, Quaternion.identity);
 
         Destroy(shot, 3f);
-
       }
       // Move player
       if (Input.GetKey(KeyCode.LeftArrow))
