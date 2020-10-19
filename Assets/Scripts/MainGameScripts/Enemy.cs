@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
         int num = Random.Range(1, 1500);
         if (num == 1)
         {
-            //enemyShoot();
+            enemyShoot();
             GameObject shot = Instantiate(EnemyBullet, EnemyshottingOffset.position, Quaternion.identity);
 
             Destroy(shot, 3f);

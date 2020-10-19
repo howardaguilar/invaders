@@ -22,14 +22,14 @@ public class Player : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        playerAnimator = this.GetComponent<Animator>();
+        playerAnimator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
       if (Input.GetKeyDown(KeyCode.Space))
       {
-            //PlayerPew();
+            PlayerPew();
             playerAnimator.SetTrigger("Shoot");
         GameObject shot = Instantiate(bullet, shottingOffset.position, Quaternion.identity);
 
